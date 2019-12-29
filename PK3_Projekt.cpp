@@ -9,20 +9,10 @@
 
 using namespace std;
 
-struct OperationList {
-	string operationName;
-	OperationList* next;
-};
-
 struct ConsoleParams {
 	string inputFileName;
 	string outputFileName;
 	list<string> operationList;
-};
-
-struct TransformedWord {
-	string word;
-	TransformedWord* next;
 };
 
 void displayHelp() {
@@ -36,6 +26,12 @@ void displayHelp() {
 
 	cout << "----------------------------------------------------------" << endl;
 }
+
+/*string trimWord(string word) {
+	char charToTrim[] = { '!', ',', '.', ';', ':', '?', ' ', '\n', '\t'};
+	
+	return word;
+}*/
 
 list<string> readFromFileToList(string inputName) {
 	ifstream inputFile;
@@ -52,6 +48,7 @@ list<string> readFromFileToList(string inputName) {
 	else {
 		string word;
 		while (inputFile >> word) {
+			//word = trimWord(word);
 			lineFromFile.push_back(word);
 		}
 		
