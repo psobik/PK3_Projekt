@@ -6,19 +6,10 @@
 #define _CRTDBG_MAP_ALLOC  
 #include <stdlib.h>  
 #include <crtdbg.h>  
+#include "ConsoleParams.h"
+#include "IOUtils.h"
 
 using namespace std;
-
-struct ConsoleParams {
-	string inputFileName;
-	string outputFileName;
-	list<string> operationList;
-};
-
-static const struct Operations {
-	static const int operationsSize = 5;
-	string operations[operationsSize] = { "replaceLetterAWithLetterB", "toLowerCase", "toUpperCase", "wordToThreeLetters", "wordToTenLetters" };
-};
 
 void displayHelp() {
 	cout << "\n \n Maybe you need some help? \n" << endl;
@@ -65,80 +56,15 @@ list<string> trimmedWords(list<string> wordList) {
 	return trimmedWords;
 }
 
-list<string> readFromFileToList(string inputName) {
-
-	ifstream inputFile;
-	list<string> wordsFromFile;
-
-	inputFile.open(inputName);
-
-	if (inputFile.good() == false) {
-		cout << "Something went wrong :( " << endl;
-		cout << "Check if you wrote correct name of your file... \n";
-		displayHelp();
-		return wordsFromFile;
-	}
-	else {
-		string word;
-		while (inputFile >> word) {
-			wordsFromFile.push_back(word);
-		}
-	}
-	inputFile.close();
-
-	return wordsFromFile;
-}
-
 void writeFromListToFile(string outputName, list<string> listToWrite) {
 	ofstream outputFile;
 
 	outputFile.open(outputName);
 
 	for (string word : listToWrite) {
-		outputFile << word << "\n";
+		outputFile << word << endl;
 	}
 
-}
-
-bool operationExist(string operationToCheck) {
-	Operations* operations = new Operations;
-	for (int i = 0; i < operations->operationsSize; i++) {
-		if (operations->operations[i] == operationToCheck) {
-			return true;
-		}
-	}
-	return false;
-}
-
-ConsoleParams* getConsoleParams(int liczbaArg, char** argument) {
-	ConsoleParams* consoleParams = new ConsoleParams;
-
-
-	for (int i = 1; i < liczbaArg; i++) {
-		if (argument[i][0] == '-' && strlen(argument[i]) == 2) {
-			switch (argument[i][1]) {
-			case 'h':
-				displayHelp();
-				i++;
-				break;
-			case 'i':
-				consoleParams->inputFileName = argument[i + 1];
-				i++;
-				break;
-			case 'o':
-				consoleParams->outputFileName = argument[i + 1];
-				i++;
-				break;
-			case 't':
-				if (operationExist(argument[i + 1]) == true) {
-					consoleParams->operationList.push_back(argument[i + 1]);
-				}
-				i++;
-				break;
-			}
-		}
-	}
-	return consoleParams;
 }
 
 string replaceLetterAWithLetterB(string word) {
@@ -213,20 +139,32 @@ list<string> transformText(list<string> operationList, list<string> wordsList) {
 
 int main(int argc, char** argv)
 {
+	ConsoleParams consoleParams(argc, argv);
 
-	ConsoleParams* consoleParams;
-	consoleParams = getConsoleParams(argc, argv);
-
-	cout << consoleParams->inputFileName << endl;
-	cout << consoleParams->outputFileName << endl;
-
-	cout << "\n\noperations: " << endl;
-	for (string element : consoleParams->operationList) {
+	cout << "operations: " << endl;
+	for (string element : consoleParams.getOperationList()) {
 		cout << element << '\n';
 	}
+
 	cout << endl;
 
-	list<string> wordsFromFile = readFromFileToList(consoleParams->inputFileName);
+	IOUtils fileToRead(consoleParams.getInputFileName());
+	
+	list<string> errors = fileToRead.isReadyToRead();
+	if (errors.size() > 0) {
+		for (string element : errors) {
+			cout << element << endl;
+			displayHelp();
+			return 0;
+		}
+	}
+	
+	list<string> words = fileToRead.readFromFile();
+	for (string element : words) {
+		cout << element << endl;
+	}
+
+	/*list<string> wordsFromFile = readFromFileToList(consoleParams->inputFileName);
 
 	list<string> trimmedWordsFromFile = trimmedWords(wordsFromFile);
 
@@ -237,7 +175,6 @@ int main(int argc, char** argv)
 	}
 
 	writeFromListToFile(consoleParams->outputFileName,transformedWord);
-	delete consoleParams;
-	_CrtDumpMemoryLeaks();
+	_CrtDumpMemoryLeaks();*/
 	return 0;
 }
