@@ -1,8 +1,8 @@
-#include "IOUtils.h"
+#include "TxtFile.h"
 
 using namespace std;
 
-bool IOUtils::ifFileTxt() {
+bool TxtFile::ifFileTxt() {
 	string end = fileName.substr(fileName.length() - 4, 4);
 	if (end == ".txt") {
 		return true;
@@ -10,7 +10,7 @@ bool IOUtils::ifFileTxt() {
 	return false;
 }
 
-bool IOUtils::ifFileNotEmpty(fstream* inputFile) {
+bool TxtFile::ifFileNotEmpty(fstream* inputFile) {
 	if (inputFile->good()) {
 		inputFile->seekp(0, ios::end);
 		size_t size = inputFile->tellg();
@@ -19,11 +19,11 @@ bool IOUtils::ifFileNotEmpty(fstream* inputFile) {
 	return false;
 }
 
-IOUtils::~IOUtils() {
+TxtFile::~TxtFile() {
 
 }
 
-list<string> IOUtils::readFromFile() {
+list<string> TxtFile::readFromFile() {
 	ifstream inputFile;
 	list<string> wordsFromFile;
 
@@ -38,7 +38,7 @@ list<string> IOUtils::readFromFile() {
 	return wordsFromFile;
 }
 
-void IOUtils::writeToFile(list<string> listToWrite) {
+void TxtFile::writeToFile(list<string> listToWrite) {
 	ofstream outputFile;
 
 	outputFile.open(fileName);
@@ -49,12 +49,12 @@ void IOUtils::writeToFile(list<string> listToWrite) {
 
 }
 
-IOUtils::IOUtils(string fileName)
+TxtFile::TxtFile(string fileName)
 {
 	this->fileName = fileName;
 }
 
-list<string> IOUtils::isReadyToRead() {
+list<string> TxtFile::isReadyToRead() {
 	fstream file;
 	list<string> errors;
 
@@ -70,7 +70,7 @@ list<string> IOUtils::isReadyToRead() {
 	return errors;
 }
 
-list<string> IOUtils::isReadyToWrite() {
+list<string> TxtFile::isReadyToWrite() {
 	fstream file;
 	list<string> errors;
 

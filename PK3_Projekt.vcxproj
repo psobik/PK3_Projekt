@@ -152,12 +152,25 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="ConsoleParams.cpp" />
-    <ClCompile Include="IOUtils.cpp" />
+    <ClCompile Include="ReplaceLetterAWithLetterB.cpp" />
+    <ClCompile Include="TextTransform.cpp" />
+    <ClCompile Include="ToLowerCase.cpp" />
+    <ClCompile Include="ToUpperCase.cpp" />
+    <ClCompile Include="TxtFile.cpp" />
     <ClCompile Include="PK3_Projekt.cpp" />
+    <ClCompile Include="WordToTenLetters.cpp" />
+    <ClCompile Include="WordToThreeLetters.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AbstractOperation.h" />
     <ClInclude Include="ConsoleParams.h" />
-    <ClInclude Include="IOUtils.h" />
+    <ClInclude Include="ReplaceLetterAWithLetterB.h" />
+    <ClInclude Include="TextTransform.h" />
+    <ClInclude Include="ToLowerCase.h" />
+    <ClInclude Include="ToUpperCase.h" />
+    <ClInclude Include="TxtFile.h" />
+    <ClInclude Include="WordToTenLetters.h" />
+    <ClInclude Include="WordToThreeLetters.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

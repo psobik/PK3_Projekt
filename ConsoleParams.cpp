@@ -1,5 +1,14 @@
 #include "ConsoleParams.h"
 
+bool ConsoleParams::operationExist(string operationToCheck) {
+	for (int i = 0; i < operationsSize; i++) {
+		if (operations[i] == operationToCheck) {
+			return true;
+		}
+	}
+	return false;
+}
+
 string ConsoleParams::getInputFileName() {
 	return inputFileName;
 }
@@ -10,15 +19,6 @@ string ConsoleParams::getOutputFileName() {
 
 list<string> ConsoleParams::getOperationList() {
 	return operationList;
-}
-
-bool ConsoleParams::operationExist(string operationToCheck) {
-	for (int i = 0; i < operationsSize; i++) {
-		if (operations[i] == operationToCheck) {
-			return true;
-		}
-	}
-	return false;
 }
 
 ConsoleParams::ConsoleParams(int argNumber, char** argument) {

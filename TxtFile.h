@@ -5,7 +5,7 @@
 
 using namespace std;
 
-class IOUtils
+class TxtFile
 {
 	string fileName;
 
@@ -19,8 +19,6 @@ public:
 	list<string> readFromFile();
 	void writeToFile(list<string> listToWrite);
 
-	IOUtils(string fileName);
-	~IOUtils();
-
+	TxtFile(string fileName);
+	~TxtFile();
 };
-

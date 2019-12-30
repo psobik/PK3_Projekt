@@ -7,7 +7,7 @@
 #include <stdlib.h>  
 #include <crtdbg.h>  
 #include "ConsoleParams.h"
-#include "IOUtils.h"
+#include "TxtFile.h"
 
 using namespace std;
 
@@ -73,9 +73,9 @@ string replaceLetterAWithLetterB(string word) {
 }
 
 string toLowerCase(string word) {
-	for_each(word.begin(), word.end(), [](char& c) {
-		c = ::tolower(c);
-		});
+	for (char& character : word) {
+		character = tolower(character);
+	}
 	return word;
 }
 
@@ -141,14 +141,14 @@ int main(int argc, char** argv)
 {
 	ConsoleParams consoleParams(argc, argv);
 
-	cout << "operations: " << endl;
+	/*cout << "operations: " << endl;
 	for (string element : consoleParams.getOperationList()) {
 		cout << element << '\n';
 	}
-
+	*/
 	cout << endl;
 
-	IOUtils fileToRead(consoleParams.getInputFileName());
+	TxtFile fileToRead(consoleParams.getInputFileName());
 	
 	list<string> errors = fileToRead.isReadyToRead();
 	if (errors.size() > 0) {
@@ -160,21 +160,19 @@ int main(int argc, char** argv)
 	}
 	
 	list<string> words = fileToRead.readFromFile();
-	for (string element : words) {
+	
+	/*for (string element : words) {
 		cout << element << endl;
-	}
+	}*/
 
-	/*list<string> wordsFromFile = readFromFileToList(consoleParams->inputFileName);
-
-	list<string> trimmedWordsFromFile = trimmedWords(wordsFromFile);
-
-	list<string> transformedWord = transformText(consoleParams->operationList, trimmedWordsFromFile);
+	list<string> transformedWord = transformText(consoleParams.getOperationList(), words);
 
 	for (string element : transformedWord) {
 		cout << element << '\n';
 	}
 
-	writeFromListToFile(consoleParams->outputFileName,transformedWord);
-	_CrtDumpMemoryLeaks();*/
+	writeFromListToFile(consoleParams.getOutputFileName(),transformedWord);
+
+	_CrtDumpMemoryLeaks();
 	return 0;
 }
