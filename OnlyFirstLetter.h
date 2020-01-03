@@ -1,7 +1,7 @@
 #pragma once
 #include "AbstractOperation.h"
 
-class WordToTenLetters : public AbstractOperation
+class OnlyFirstLetter : public AbstractOperation
 {
 public:
 	virtual string applyOperation(string word) override;

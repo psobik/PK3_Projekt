@@ -152,23 +152,29 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="ConsoleParams.cpp" />
+    <ClCompile Include="OnlyFirstLetter.cpp" />
+    <ClCompile Include="Operations.cpp" />
     <ClCompile Include="ReplaceLetterAWithLetterB.cpp" />
-    <ClCompile Include="TextTransform.cpp" />
+    <ClCompile Include="Report.cpp" />
     <ClCompile Include="ToLowerCase.cpp" />
     <ClCompile Include="ToUpperCase.cpp" />
     <ClCompile Include="TxtFile.cpp" />
     <ClCompile Include="PK3_Projekt.cpp" />
+    <ClCompile Include="Word.cpp" />
     <ClCompile Include="WordToTenLetters.cpp" />
     <ClCompile Include="WordToThreeLetters.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AbstractOperation.h" />
     <ClInclude Include="ConsoleParams.h" />
+    <ClInclude Include="OnlyFirstLetter.h" />
+    <ClInclude Include="Operations.h" />
     <ClInclude Include="ReplaceLetterAWithLetterB.h" />
-    <ClInclude Include="TextTransform.h" />
+    <ClInclude Include="Report.h" />
     <ClInclude Include="ToLowerCase.h" />
     <ClInclude Include="ToUpperCase.h" />
     <ClInclude Include="TxtFile.h" />
+    <ClInclude Include="Word.h" />
     <ClInclude Include="WordToTenLetters.h" />
     <ClInclude Include="WordToThreeLetters.h" />
   </ItemGroup>

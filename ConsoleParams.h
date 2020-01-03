@@ -9,14 +9,12 @@ class ConsoleParams
 	string outputFileName;
 	list<string> operationList;
 	bool displayHelp;
-	static const int operationsSize = 5;
-	string operations[operationsSize] = { "replaceLetterAWithLetterB", "toLowerCase", "toUpperCase", "wordToThreeLetters", "wordToTenLetters" };
-	bool operationExist(string name);
 
 public:
 	string getInputFileName();
 	string getOutputFileName();
 	list<string> getOperationList();
+	bool ifDisplayHelp();
 	
 	ConsoleParams(int argNumber, char** argument);
 	~ConsoleParams();

@@ -1,14 +1,5 @@
 #include "ConsoleParams.h"
 
-bool ConsoleParams::operationExist(string operationToCheck) {
-	for (int i = 0; i < operationsSize; i++) {
-		if (operations[i] == operationToCheck) {
-			return true;
-		}
-	}
-	return false;
-}
-
 string ConsoleParams::getInputFileName() {
 	return inputFileName;
 }
@@ -19,6 +10,13 @@ string ConsoleParams::getOutputFileName() {
 
 list<string> ConsoleParams::getOperationList() {
 	return operationList;
+}
+
+bool ConsoleParams::ifDisplayHelp() {
+	if (displayHelp) {
+		return true;
+	}
+	return false;
 }
 
 ConsoleParams::ConsoleParams(int argNumber, char** argument) {
@@ -39,9 +37,7 @@ ConsoleParams::ConsoleParams(int argNumber, char** argument) {
 				i++;
 				break;
 			case 't':
-				if (operationExist(argument[i + 1])) {
-					operationList.push_back(argument[i + 1]);
-				}
+				operationList.push_back(argument[i + 1]);
 				i++;
 				break;
 			}

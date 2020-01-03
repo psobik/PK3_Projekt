@@ -47,6 +47,7 @@ void TxtFile::writeToFile(list<string> listToWrite) {
 		outputFile << word << endl;
 	}
 
+	outputFile.close();
 }
 
 TxtFile::TxtFile(string fileName)
@@ -61,10 +62,10 @@ list<string> TxtFile::isReadyToRead() {
 	file.open(fileName, ios::in);
 
 	if (!ifFileNotEmpty(&file)) {
-		errors.push_back("Empty file");
+		errors.push_back("Input file is empty");
 	}
 	if (!ifFileTxt()) {
-		errors.push_back("File is not .txt");
+		errors.push_back("Input file is not .txt");
 	}
 	file.close();
 	return errors;
@@ -77,10 +78,10 @@ list<string> TxtFile::isReadyToWrite() {
 	file.open(fileName, ios::out);
 
 	if (ifFileNotEmpty(&file)) {
-		errors.push_back("File is not empty");
+		errors.push_back("Output file is not empty");
 	}
 	if (!ifFileTxt()) {
-		errors.push_back("File is not .txt");
+		errors.push_back("Output file is not .txt");
 	}
 	file.close();
 	return errors;
