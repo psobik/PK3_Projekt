@@ -9,7 +9,7 @@ string ToLowerCase::applyOperation(string word)
 }
 
 string ToLowerCase::getName(){
-	return "toLowerCcase";
+	return "toLowerCase";
 }
 
 int ToLowerCase::getTimesPerformed() {

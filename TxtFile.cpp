@@ -62,7 +62,7 @@ list<string> TxtFile::isReadyToRead() {
 	file.open(fileName, ios::in);
 
 	if (!ifFileNotEmpty(&file)) {
-		errors.push_back("Input file is empty");
+		errors.push_back("Input file is empty or does not exist");
 	}
 	if (!ifFileTxt()) {
 		errors.push_back("Input file is not .txt");

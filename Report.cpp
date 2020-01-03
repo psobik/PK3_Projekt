@@ -7,7 +7,6 @@
 using namespace std;
 
 void Report::generate(list<AbstractOperation*> operations) {
-	
 	cout << "\n\n###################### REPORT ############################\n" << endl;
 	for (AbstractOperation* operation : operations) {
 		cout << "Operation: " << operation->getName() << " performed: " << operation->getTimesPerformed() << " times." << endl;
@@ -15,7 +14,6 @@ void Report::generate(list<AbstractOperation*> operations) {
 }
 
 Report::Report() {
-
 }
 
 Report::~Report(){

@@ -152,6 +152,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="ConsoleParams.cpp" />
+    <ClCompile Include="Help.cpp" />
     <ClCompile Include="OnlyFirstLetter.cpp" />
     <ClCompile Include="Operations.cpp" />
     <ClCompile Include="ReplaceLetterAWithLetterB.cpp" />
@@ -167,6 +168,7 @@
   <ItemGroup>
     <ClInclude Include="AbstractOperation.h" />
     <ClInclude Include="ConsoleParams.h" />
+    <ClInclude Include="Help.h" />
     <ClInclude Include="OnlyFirstLetter.h" />
     <ClInclude Include="Operations.h" />
     <ClInclude Include="ReplaceLetterAWithLetterB.h" />
